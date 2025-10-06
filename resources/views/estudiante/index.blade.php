@@ -110,7 +110,6 @@
             .sidebar .collapse .dropdown-item:hover {
                 background-color: #0f2027;
             }
-
         }
     </style>
 </head>
@@ -123,9 +122,8 @@
 
             <nav class="col-lg-2 col-md-3 sidebar d-flex flex-column">
                 <div class="text-center mb-3">
-                    <img src="" alt="Gobierno de Guatemala" class="img-fluid"
+                    <img src="\imagen\mingoblogo.png" alt="Gobierno de Guatemala" class="img-fluid"
                         style="max-width: 120px;">
-                    <h6 class="mt-2">Gobierno de Guatemala</h6>
                 </div>
 
                 <a href="#" class="text-white px-3 py-2"
@@ -196,7 +194,7 @@
                     onclick="loadContent('{{ route('busqueda.mostrar') }}', event)">Consultar</a>
             </nav>
 
-            <div class="col-lg-10 col-md-9 mt- content" id="mainContent">
+            <div class="col-lg-10 col-md-9 content" id="mainContent">
                 <div class="container-fluid">
                     @include('graficas.dashboard')
                 </div>
