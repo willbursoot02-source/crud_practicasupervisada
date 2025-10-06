@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Vertical Responsive</title>
+    <title>Registro</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -84,8 +84,6 @@
             .content {
                 padding-top: 60px;
             }
-
-            /* Botones collapse del sidebar */
             .sidebar .btn {
                 background: none;
                 border: none;
@@ -100,8 +98,6 @@
             .sidebar .btn:hover {
                 background-color: #0f2027;
             }
-
-            /* Subenlaces */
             .sidebar .collapse .dropdown-item {
                 color: #fff;
                 padding: 8px 25px;
@@ -131,7 +127,6 @@
 
                 <div class="accordion" id="sidebarAccordion">
 
-                    <!-- PRACTICANTE -->
                     <div class="accordion-item bg-transparent border-0">
                         <h2 class="accordion-header" id="headingPracticante">
                             <button class="accordion-button collapsed bg-transparent text-white px-3 py-2" type="button"
@@ -151,7 +146,6 @@
                         </div>
                     </div>
 
-                    <!-- SUPERVISOR -->
                     <div class="accordion-item bg-transparent border-0">
                         <h2 class="accordion-header" id="headingSupervisor">
                             <button class="accordion-button collapsed bg-transparent text-white px-3 py-2" type="button"
@@ -171,7 +165,6 @@
                         </div>
                     </div>
 
-                    <!-- CONTROL -->
                     <div class="accordion-item bg-transparent border-0">
                         <h2 class="accordion-header" id="headingControl">
                             <button class="accordion-button collapsed bg-transparent text-white px-3 py-2" type="button"
