@@ -84,6 +84,7 @@
             .content {
                 padding-top: 60px;
             }
+
             .sidebar .btn {
                 background: none;
                 border: none;
@@ -98,6 +99,7 @@
             .sidebar .btn:hover {
                 background-color: #0f2027;
             }
+
             .sidebar .collapse .dropdown-item {
                 color: #fff;
                 padding: 8px 25px;

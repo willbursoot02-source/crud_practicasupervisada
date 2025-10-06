@@ -102,16 +102,19 @@
                             <td>{{ $sup->estado ? 'Activo' : 'Inactivo' }}</td>
                             <td>
                                 <div class="d-flex flex-column gap-2">
-                                    <a class="btn btn-custom-primary btn-sm btn-editar-supervisor" data-id="{{ $sup->id_supervisor }}">
+                                    <a class="btn btn-custom-primary btn-sm btn-editar-supervisor"
+                                        data-id="{{ $sup->id_supervisor }}">
                                         <span class="material-symbols-outlined">edit</span> Editar
                                     </a>
 
                                     @if($sup->estado)
-                                        <a href="{{ route('supervisor.inactivar', $sup->id_supervisor) }}" class="btn btn-danger btn-sm">
+                                        <a href="{{ route('supervisor.inactivar', $sup->id_supervisor) }}"
+                                            class="btn btn-danger btn-sm">
                                             Inactivar
                                         </a>
                                     @else
-                                        <a href="{{ route('supervisor.activar', $sup->id_supervisor) }}" class="btn btn-success btn-sm">
+                                        <a href="{{ route('supervisor.activar', $sup->id_supervisor) }}"
+                                            class="btn btn-success btn-sm">
                                             Activar
                                         </a>
                                     @endif
@@ -200,4 +203,5 @@
     </script>
 
 </body>
+
 </html>

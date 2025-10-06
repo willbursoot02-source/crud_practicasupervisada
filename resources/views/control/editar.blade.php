@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container mt-5">
         <h2 class="text-center mb-4">Editar Control</h2>
@@ -20,8 +22,7 @@
                 <label>Supervisor</label>
                 <select name="id_supervisor" class="form-control">
                     @foreach($supervisores as $sup)
-                        <option value="{{ $sup->id_supervisor }}" 
-                            {{ $control->id_supervisor == $sup->id_supervisor ? 'selected' : '' }}>
+                        <option value="{{ $sup->id_supervisor }}" {{ $control->id_supervisor == $sup->id_supervisor ? 'selected' : '' }}>
                             {{ $sup->nombre }}
                         </option>
                     @endforeach
@@ -32,8 +33,7 @@
                 <label>Practicante</label>
                 <select name="id_practicante" class="form-control">
                     @foreach($practicantes as $prac)
-                        <option value="{{ $prac->id_practicante }}" 
-                            {{ $control->id_practicante == $prac->id_practicante ? 'selected' : '' }}>
+                        <option value="{{ $prac->id_practicante }}" {{ $control->id_practicante == $prac->id_practicante ? 'selected' : '' }}>
                             {{ $prac->nombre }}
                         </option>
                     @endforeach
@@ -60,4 +60,5 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

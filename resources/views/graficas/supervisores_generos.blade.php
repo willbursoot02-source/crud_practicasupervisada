@@ -50,7 +50,7 @@
             width: '100%',
             height: 400,
             is3D: true,
-            colors: ['#6BAED6','#DE2D26','#969696'],
+            colors: ['#6BAED6', '#DE2D26', '#969696'],
             legend: { position: 'right' }
         };
 

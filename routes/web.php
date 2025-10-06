@@ -60,8 +60,7 @@ Route::get('/control/buscar/control', [ControlController::class, 'busqueda_mostr
 Route::post('/consulta-dpi', [ControlController::class, 'consulta_dpi'])->name('consulta.dpi');
 Route::get('/control/graficas', [ControlController::class, 'graficas'])->name('graficas.index');
 Route::get('/control/graficas', [ControlController::class, 'graficas'])->name('graficas.index');
-Route::get('/control/obtener/{id}', [ControlController::class, 'obtener']);
-Route::post('/control/guardar', [ControlController::class, 'guardar']);
+
 
 
 

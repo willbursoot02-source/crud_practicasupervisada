@@ -143,7 +143,7 @@ class ControlController extends Controller
         $generos = ['Masculino', 'Femenino'];
 
 
-        return view('graficas.index', compact('supervisores', 'practicantes', 'totalSupervisores', 'totalPracticantes', 'generos')); 
+        return view('graficas.index', compact('supervisores', 'practicantes', 'totalSupervisores', 'totalPracticantes', 'generos'));
     }
 
 

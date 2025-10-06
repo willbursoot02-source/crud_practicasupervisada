@@ -33,7 +33,7 @@
         data.addColumn('number', 'Cantidad');
         data.addColumn({ type: 'string', role: 'style' });
 
-        const colores = ['#08306B','#2171B5','#4292C6','#6BAED6','#9ECAE1','#C6DBEF','#DEEBF7','#F7FBFF','#BDD7E7'];
+        const colores = ['#08306B', '#2171B5', '#4292C6', '#6BAED6', '#9ECAE1', '#C6DBEF', '#DEEBF7', '#F7FBFF', '#BDD7E7'];
         let colorIndex = 0;
         for (const institucion in conteo) {
             data.addRow([institucion, conteo[institucion], colores[colorIndex % colores.length]]);
