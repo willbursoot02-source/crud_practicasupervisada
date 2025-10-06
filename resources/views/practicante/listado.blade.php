@@ -1,95 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>listado</title>
-    <!--bootstrap css-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <!--FONT AWESOME 5-->
+    <title>Listado de Practicantes</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            min-height: 100vh;
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .container-custom {
+            background-color: #ffffff;
+            color: #333;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 50px;
+        }
+
+        .table thead {
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: #fff;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .table tbody tr:hover {
+            background-color: #d9e1f2;
+        }
+
+        .btn-custom-primary {
+            background-color: #141e30;
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #1b2a45;
+            color: #fff;
+        }
+
+        .btn-custom-secondary {
+            background-color: #6c757d;
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        .btn-custom-secondary:hover {
+            background-color: #5a6268;
+            color: #fff;
+        }
+
+        .btn-group-vertical .btn {
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="container container-custom mb-4">
+        <div class="d-flex justify-content-start mb-3">
+            <a href="{{ route('dashboard') }}" class="btn btn-custom-secondary">Inicio</a>
+        </div>
 
-    <style>
-        .container {
-            max-width: 1031px;
-            margin: 95px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+        <h2 class="text-center mb-4">Practicantes Activos</h2>
 
-    <div class="container mb-3">
-        <div class="d-grid gap-2">
-            <a href="{{ route('dashboard') }}" class="btn btn-secondary"
-                onclick="loadContent('{{ route('dashboard') }}', event)">
-                Inicio
-            </a>
+        <div class="table-responsive">
+            <table class="table table-bordered align-middle text-center">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Edad</th>
+                        <th>Teléfono</th>
+                        <th>Institución</th>
+                        <th>Carrera</th>
+                        <th>Área</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($practicante as $sup)
+                        <tr>
+                            <td>{{ $sup->nombre }}</td>
+                            <td>{{ $sup->edad }}</td>
+                            <td>{{ $sup->telefono }}</td>
+                            <td>{{ $sup->institucion }}</td>
+                            <td>{{ $sup->carrera }}</td>
+                            <td>{{ $sup->area }}</td>
+                            <td>{{ $sup->estado_texto }}</td>
+                            <td>
+                                <div class="d-flex flex-column gap-2">
+                                    <a class="btn btn-custom-primary btn-sm btn-ver" data-id="{{ $sup->id_practicante }}">
+                                        <span class="material-symbols-outlined">edit</span> Editar
+                                    </a>
+
+
+                                    @if($sup->estado)
+                                        <a href="{{ route('practicante.inactivar', $sup->id_practicante) }}"
+                                            class="btn btn-danger btn-sm">
+                                            Inactivar
+                                        </a>
+                                    @else
+                                        <a href="{{ route('practicante.activar', $sup->id_practicante) }}"
+                                            class="btn btn-success btn-sm">
+                                            Activar
+                                        </a>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 
-
-    <div class="container">
-        <h2 class="text-center mt-4 mb-4">Practicantes Activos</h2>
-        <table class="table table-brdered">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Edad</th>
-                    <th>Teléfono</th>
-                    <th>Institución</th>
-                    <th>Carrera</th>
-                    <th>Área</th>
-                    <th>Acción</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($practicante as $sup)
-                    <tr>
-                        <td>{{ $sup->nombre }}</td>
-                        <td>{{ $sup->edad }}</td>
-                        <td>{{ $sup->telefono }}</td>
-                        <td>{{ $sup->institucion }}</td>
-                        <td>{{ $sup->carrera }}</td>
-                        <td>{{ $sup->area }}</td>
-                        <td>{{ $sup->estado_texto }}</td>
-                        <td>
-                            <div class="d-flex flex-column gap-2">
-
-                                <a class="btn btn-info btn-sm btn-ver" data-id="{{ $sup->id_practicante }}">
-                                    Ver
-                                </a>
-
-                                @if($sup->estado)
-                                    <a href="{{ route('practicante.inactivar', $sup->id_practicante) }}"
-                                        class="btn btn-danger btn-sm">
-                                        Inactivar
-                                    </a>
-                                @else
-                                    <a href="{{ route('practicante.activar', $sup->id_practicante) }}"
-                                        class="btn btn-primary btn-sm">
-                                        Activar
-                                    </a>
-                                @endif
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-
-
+    <!-- Modal -->
     <div class="modal fade" id="practicanteModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -126,32 +164,26 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="actualizar_estudiante" class="btn btn-success">Actualizar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-custom-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>
     </div>
 
-
-    <!--bootstrap ja-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         $(document).ready(function () {
-
             $('.btn-ver').click(function () {
                 var id = $(this).data('id');
-
                 $.ajax({
                     url: '/practicante/datos/actualizar/' + id,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
-
                         $('#id_practicante').val(data.id_practicante ?? data.id);
                         $('#nombre').val(data.nombre);
                         $('#edades').val(data.edad);
@@ -167,13 +199,8 @@
                             $('#nombre').focus();
                         }, { once: true });
                     },
-                    error: function (err) {
-                        console.error(err);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'No se pudieron obtener los datos del practicante'
-                        });
+                    error: function () {
+                        Swal.fire('Error', 'No se pudieron obtener los datos del practicante', 'error');
                     }
                 });
             });
@@ -191,48 +218,25 @@
                     url: '/practicante/guardar',
                     type: 'POST',
                     data: {
-                        id_practicante: id_practicante,
-                        nombre: nombre,
-                        edades: edades,
-                        telefono: telefono,
-                        institucion: institucion,
-                        carrera: carrera,
-                        area: area
+                        id_practicante, nombre, edades, telefono, institucion, carrera, area
                     },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function (result) {
                         if (result.success) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: result.title,
-                                text: result.message
-                            }).then(() => {
-                                location.reload();
-                            });
+                            Swal.fire(result.title, result.message, 'success').then(() => location.reload());
                         } else {
-                            Swal.fire({
-                                icon: 'error',
-                                title: result.title,
-                                text: result.message
-                            });
+                            Swal.fire(result.title, result.message, 'error');
                         }
                     },
-                    error: function (err) {
-                        console.error("Error en la petición:", err);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'No se pudo actualizar el practicante'
-                        });
+                    error: function () {
+                        Swal.fire('Error', 'No se pudo actualizar el practicante', 'error');
                     }
                 });
             });
         });
     </script>
-
-
 </body>
 
 </html>

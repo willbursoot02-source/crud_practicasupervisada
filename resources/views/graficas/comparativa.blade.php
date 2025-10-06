@@ -6,47 +6,42 @@
 
     function initComparativaChart() {
         drawComparativaChart();
-        var selectTipo = document.getElementById('tipoSelect');
+
+        const selectTipo = document.getElementById('tipoSelect');
         if (selectTipo) {
             selectTipo.addEventListener('change', function () {
                 drawComparativaChart(this.value);
             });
         }
+
         window.addEventListener('resize', function () {
             drawComparativaChart(selectTipo ? selectTipo.value : '');
         });
     }
 
     function drawComparativaChart(filtro = '') {
-        var totalSupervisores = @json($totalSupervisores);
-        var totalPracticantes = @json($totalPracticantes);
+        const totalSupervisores = @json($totalSupervisores);
+        const totalPracticantes = @json($totalPracticantes);
 
-        var dataComparativa = new google.visualization.DataTable();
+        const dataComparativa = new google.visualization.DataTable();
         dataComparativa.addColumn('string', 'Tipo');
         dataComparativa.addColumn('number', 'Cantidad');
 
-        if (!filtro || filtro === 'Supervisores') {
-            dataComparativa.addRow(['Supervisores', totalSupervisores]);
-        }
-        if (!filtro || filtro === 'Practicantes') {
-            dataComparativa.addRow(['Practicantes', totalPracticantes]);
-        }
+        if (!filtro || filtro === 'Supervisores') dataComparativa.addRow(['Supervisores', totalSupervisores]);
+        if (!filtro || filtro === 'Practicantes') dataComparativa.addRow(['Practicantes', totalPracticantes]);
+        if (dataComparativa.getNumberOfRows() === 0) dataComparativa.addRow(['Sin datos', 1]);
 
-        if (dataComparativa.getNumberOfRows() === 0) {
-            dataComparativa.addRow(['Sin datos', 1]);
-        }
-
-        var chartDiv = document.getElementById('chart_div_comparativa');
-        var optionsComparativa = {
+        const chartDiv = document.getElementById('chart_div_comparativa');
+        const optionsComparativa = {
             title: 'Cantidad de Supervisores y Practicantes',
             width: '100%',
-            height: chartDiv.offsetHeight || 400,
+            height: 400,
             is3D: true,
-            colors: ['#2171B5', '#c75144'], 
+            colors: ['#2171B5', '#c75144'],
             legend: { position: 'right' }
         };
 
-        var chart = new google.visualization.PieChart(chartDiv);
+        const chart = new google.visualization.PieChart(chartDiv);
         chart.draw(dataComparativa, optionsComparativa);
     }
 </script>

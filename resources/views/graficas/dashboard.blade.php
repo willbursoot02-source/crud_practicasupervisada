@@ -19,12 +19,21 @@
         }
 
         .card {
-            min-height: 350px;
+            min-height: 400px; 
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            min-height: 400px; 
         }
 
         .chart-container {
+            flex-grow: 1;
             min-height: 300px;
+            height: 100%;
         }
+
         .card-title {
             font-weight: 600;
         }
@@ -44,12 +53,13 @@
                             <option value="Femenino">Femenino</option>
                         </select>
                         <h5 class="card-title mb-3">Clasificación de Supervisores</h5>
-                        <div class="chart-container flex-grow-1">
+                        <div class="chart-container">
                             @include('graficas.supervisores_generos')
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-12 col-md-6 d-flex">
                 <div class="card w-100">
                     <div class="card-body d-flex flex-column">
@@ -61,12 +71,13 @@
                             @endforeach
                         </select>
                         <h5 class="card-title mb-3">Practicantes por Entidades</h5>
-                        <div class="chart-container flex-grow-1">
+                        <div class="chart-container">
                             @include('graficas.practicantes_institucion')
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-12 col-md-6 d-flex">
                 <div class="card w-100">
                     <div class="card-body d-flex flex-column">
@@ -78,12 +89,13 @@
                             @endforeach
                         </select>
                         <h5 class="card-title mb-3">Rango de Edades de Practicantes</h5>
-                        <div class="chart-container flex-grow-1">
+                        <div class="chart-container">
                             @include('graficas.practicantes_edad')
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-12 col-md-6 d-flex">
                 <div class="card w-100">
                     <div class="card-body d-flex flex-column">
@@ -94,7 +106,7 @@
                             <option value="Practicantes">Practicantes</option>
                         </select>
                         <h5 class="card-title mb-3">Comparativa por Categoría</h5>
-                        <div class="chart-container flex-grow-1">
+                        <div class="chart-container">
                             @include('graficas.comparativa')
                         </div>
                     </div>
@@ -108,4 +120,3 @@
 </body>
 
 </html>
-
