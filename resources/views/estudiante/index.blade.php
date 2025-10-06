@@ -123,7 +123,7 @@
             <nav class="col-lg-2 col-md-3 sidebar d-flex flex-column">
                 <div class="text-center mb-3">
                     <img src="\imagen\mingoblogo.png" alt="Gobierno de Guatemala" class="img-fluid"
-                        style="max-width: 120px;">
+                        style="max-width: 200px;">
                 </div>
 
                 <a href="#" class="text-white px-3 py-2"
