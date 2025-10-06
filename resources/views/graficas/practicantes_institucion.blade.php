@@ -1,5 +1,7 @@
 <div id="chart_div_institucion" style="height: 400px;"></div>
 
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script type="text/javascript">
     google.charts.load('current', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(initInstitucionChart);

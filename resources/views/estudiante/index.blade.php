@@ -122,7 +122,11 @@
         <div class="row">
 
             <nav class="col-lg-2 col-md-3 sidebar d-flex flex-column">
-                <h3 class="text-center mb-4">Menú</h3>
+                <div class="text-center mb-3">
+                    <img src="" alt="Gobierno de Guatemala" class="img-fluid"
+                        style="max-width: 120px;">
+                    <h6 class="mt-2">Gobierno de Guatemala</h6>
+                </div>
 
                 <a href="#" class="text-white px-3 py-2"
                     onclick="loadContent('{{ route('dashboard') }}', event)">Dashboard</a>
